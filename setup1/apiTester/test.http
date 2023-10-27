@@ -1,0 +1,51 @@
+###
+
+POST http://192.168.0.9:5000/api/register
+Content-Type: application/json
+
+{
+    "orgname": "Org1",
+    "username": "user2"
+}
+
+###
+POST http://192.168.0.9:5000/api/addCar
+Content-Type: application/json
+
+{
+    "orgname": "Org1",
+    "username": "user2",
+    "args": ["CARX1206","Suzuki","ARF","white","sonu"]
+}
+
+###
+GET http://192.168.0.9:5000/api/getCar
+Content-Type: application/json
+
+{
+    "orgname": "Org1",
+    "username": "user2",
+    "args": ["CARX1211"]
+}
+
+###
+POST http://192.168.0.9:5000/api/testInvoke
+Content-Type: application/json
+
+{
+    "funcname":"CreateCar",
+    "orgname": "Org1",
+    "username": "user2",
+    "args": ["CARX1211","Jaguar","ARF","black","bilal shaik"]
+}
+
+###
+POST http://192.168.0.9:5000/api/testQuery
+Content-Type: application/json
+
+{
+    "funcname":"QueryAllUser",
+    "orgname":"Org1",
+    "username":"user2",
+    "args":[]
+}
