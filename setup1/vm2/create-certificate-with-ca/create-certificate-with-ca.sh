@@ -18,7 +18,7 @@ createCertificateForOrg2() {
     
     echo '=================Starting To Create Certificates for org2================='
     
-    sudo mkdir -p crypto-config/peerOrganizations/org2.example.com/
+    mkdir -p crypto-config/peerOrganizations/org2.example.com/
     
     export FABRIC_CA_CLIENT_HOME=${PWD}/crypto-config/peerOrganizations/org2.example.com/
     

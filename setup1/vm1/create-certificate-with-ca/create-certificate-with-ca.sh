@@ -18,7 +18,7 @@ createCertificateForOrderers(){
     
     echo '=================Starting To Create Certificates for orderer================='
     
-    sudo mkdir -p crypto-config/peerOrganizations/org1.example.com/
+    mkdir -p crypto-config/peerOrganizations/org1.example.com/
     
     export FABRIC_CA_CLIENT_HOME=${PWD}/crypto-config/ordererOrganizations/org1.example.com/
     
@@ -162,7 +162,7 @@ createCertificateForOrg1() {
     
     echo '=================Starting To Create Certificates for org1================='
     
-    sudo mkdir -p crypto-config/peerOrganizations/org1.example.com/
+    mkdir -p crypto-config/peerOrganizations/org1.example.com/
     
     export FABRIC_CA_CLIENT_HOME=${PWD}/crypto-config/peerOrganizations/org1.example.com/
     

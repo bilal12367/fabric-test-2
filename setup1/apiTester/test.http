@@ -1,6 +1,6 @@
 ###
 
-POST http://192.168.0.9:5000/api/register
+POST http://192.168.0.6:5000/api/register
 Content-Type: application/json
 
 {
@@ -40,12 +40,34 @@ Content-Type: application/json
 }
 
 ###
-POST http://192.168.0.9:5000/api/testQuery
+POST http://192.168.0.6:5000/api/testInvoke
 Content-Type: application/json
 
 {
-    "funcname":"QueryAllUser",
+    "funcname":"CreateProduct",
+    "orgname": "Org1",
+    "username": "user2",
+    "args": ["PRODX1234","Hyper-V RAM 16GB","Computers","8000","Hyper-V"]
+}
+###
+POST http://192.168.0.6:5000/api/testInvoke
+Content-Type: application/json
+ 
+{
+    "funcname":"CreateUser",
+    "orgname": "Org1",
+    "username": "user2",
+    "args": ["0954c494-97e1-4761-a882-a52391a914c9","new_user1","new_user1@gmail.com","Normal"]
+}
+
+###
+POST http://192.168.0.6:5000/api/testQuery
+Content-Type: application/json
+
+{
+    "funcname":"QueryProduct",
     "orgname":"Org1",
     "username":"user2",
-    "args":[]
+    "args":["PRODX1234"]
 }
+

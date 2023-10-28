@@ -92,6 +92,77 @@ func (s *SmartContract) InitLedger(ctx contractapi.TransactionContextInterface) 
 	return nil
 }
 
+func (s *SmartContract) CreateProduct(ctx contractapi.TransactionContextInterface,uuid string, name string,category string, price string, brand string) error {
+
+	product := Product{
+		DocumentType: ProductDocument,
+		Name: name,
+		Category: category,
+		Price: price,
+		Brand: brand,
+	}
+
+	prodAsBytes, err := json.Marshal(product)
+	
+
+	
+	if err != nil {
+		return err
+	}
+	
+	return ctx.GetStub().PutState(uuid, prodAsBytes)
+	
+}
+
+func (s *SmartContract) QueryProduct(ctx contractapi.TransactionContextInterface, id string) ( *Product, error) {
+	prodAsBytes, err := ctx.GetStub().GetState(id)
+	if err != nil {
+		return nil, err
+	}
+
+	var product Product
+
+	err = json.Unmarshal(prodAsBytes, &product)
+	if err != nil {
+		return nil, err
+	}
+
+	return &product,nil
+}
+
+func (s *SmartContract) CreateUser(ctx contractapi.TransactionContextInterface, id string, name string, email string , usertype string) error {
+	
+	user := User{
+		DocumentType: UserDocument,
+		UserId: id,
+		UserName: name,
+		UserEmail: email,
+		UserType: usertype,
+	}
+
+	userAsBytes, err := json.Marshal(user)
+
+	if err != nil {
+		return err
+	}
+
+	return ctx.GetStub().PutState(id, userAsBytes)
+}
+
+func (s *SmartContract) QueryUser(ctx contractapi.TransactionContextInterface, id string) ( *User, error) {
+	var user User
+
+	userAsBytes,err := ctx.GetStub().GetState(id)
+	if err != nil {
+		return nil,err
+	}
+	err = json.Unmarshal(userAsBytes, &user)
+	if err != nil {
+		return nil,err
+	}
+	return &user,nil
+}
+
 func (s *SmartContract) QueryAllProduct(ctx contractapi.TransactionContextInterface) ([]QueryResultProduct, error){
 
 	queryString := fmt.Sprintf(`{"selector":{"documenttype":"%v"}}`, ProductDocument)

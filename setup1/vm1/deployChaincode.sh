@@ -46,7 +46,6 @@ presetup() {
     echo This is in vm1
     echo $PWD
     # go install
-    go mod init fabcar.go
     go mod tidy
     go build
     GO111MODULE=on go mod vendor
